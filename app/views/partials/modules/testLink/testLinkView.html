@@ -1,0 +1,30 @@
+<div class="row" ng-controller="testLink">
+	<br>
+	<div class="book-container">
+		<div class="book-header">{{ testData.name }} - Result. You Scored - {{testData.result}} % </div>
+		<div class="book-body">
+		
+			<div class="col-md-12">
+				<div ng-repeat="ques in testData.questions" class="col-md-12">
+					<label
+						style="color: #438EA8; padding-bottom: 15px; font-size: 19px; font-weight: 500;">{{
+						$index+1 }}. {{ques.question}}</label>
+						<br> &nbsp;
+						You Answered : 
+					<div class="col-md-12">
+						<label ng-if="ques.userAns==ques.answer" style="background-color: green; box-shadow: 0 0 3px rgba(0, 0, 0, 0.3)"> {{ques.options[ques.userAns]}} </label>
+						<label ng-if="ques.userAns!=ques.answer" style="background-color: red; box-shadow: 0 0 3px rgba(0, 0, 0, 0.3)">{{ques.options[ques.userAns]}}</label>
+						</div>
+					<br> &nbsp;
+					Correct Answer : 
+					<div  class="col-md-12"><label style="background-color: orange; box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); "> &nbsp; {{ques.options[ques.answer]}} &nbsp; </label>
+						
+					</div>
+					<br> &nbsp;
+				</div>
+			</div>
+		</div>
+		<div class="book-footer"></div>
+	</div>
+</div>
+

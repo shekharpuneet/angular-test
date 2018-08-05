@@ -1,0 +1,86 @@
+<div class="row" ng-controller="testLink" data-ng-init="allUser()">
+	<br>
+	<div class="book-container">
+		<div class="book-header">
+			<!-- 			<p>Header</p> -->
+			<div class="col-md-12 pull-right">
+				&nbsp;
+				<button aria-hidden="true" style="color: #438EA9; background-color: #fff" ng-click="priviousPage()"
+				data-toggle="tooltip" title="previous">
+					<i class="fa fa-chevron-left"></i>
+				</button>
+
+				<button  aria-hidden="true" style="color: #438EA9; background-color: #fff" ng-click="nextPage()"
+				data-toggle="tooltip"
+							title="next">
+					<i class="fa fa-chevron-right"></i>
+				</button>
+				<label>{{pageStart}} - {{pageEnd}} of {{allUsersCount}}</label>
+			</div>
+		</div>
+		<div class="book-body">
+			<!-- 			<p>Body</p> -->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="col-md-12">
+						<div id="head_nav">
+							<table
+								class="table table-bordered table-condensed table-striped table-hover userManageTable"
+								style=" overflow-x: scroll;">
+								<thead class="theadclass">
+									<tr>
+										<th class="col-md-2">Reg ID</th>
+										<th class="col-md-3">Name</th>
+										<th class="col-md-3">Username</th>
+										<th class="col-md-2">User Type</th>
+										<th class="col-md-2">Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="user in allUserClass.data">
+										<td class="col-md-2 t2class">{{user[0].regID}}</td>
+										<td class="col-md-3 t3class">{{user[0].firstName}}
+											{{user[0].middleName}} {{user[0].lastName}}</td>
+										<td class="col-md-3 t3class">{{user[0].userName}}</td>
+										<td class="col-md-2 t2class">{{userType[user[0].userType].___name___}}</td>
+										<td class="col-md-2 t2class"><a href="#"
+											data-toggle="tooltip" title="Click to view user details"><i
+												class="fa fa-eye" role="button" data-toggle="modal"
+												ng-click="getUserDetails(user[0],'view')"></i></a> &nbsp;|&nbsp;
+											<a href="#" data-toggle="tooltip"
+											title="Click to update user details"><i
+												class="fa fa-pencil" role="button" data-toggle="modal"
+												ng-click="getUserDetails(user[0],'update')"></i></a>
+											&nbsp;|&nbsp; <a href="#" data-toggle="tooltip"
+											title="Click to delete User"><i
+												class="fa fa-times-circle" role="button" data-toggle="modal"
+												ng-click="getUserDetails(user[0],'delete')"></i></a>
+											&nbsp;|&nbsp; <a href="#" data-toggle="tooltip"
+											title="Click to reset password"><i class="fa  fa-cogs"
+												role="button" data-toggle="modal"
+												ng-click="openResetPasswdModal(user)"></i></a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div ng-include="'partials/modules/manageUsers/crudUserModal.html'"></div>
+				<div
+					ng-include="'partials/modules/manageUsers/resetPasswordModal.html'"></div>
+				<div class="modal well" tabindex="-1" role="dialog" id="retryModel">
+					<div class="modal-header">
+						<h3>Are you sure ?</h3>
+					</div>
+					<div class="modal-body">{{alertText}}</div>
+					<div class="modal-footer">
+						<button class="btn btn-primary" ng-click="ok()">OK</button>
+						<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="book-footer">Footer</div>
+	</div>
+</div>
+

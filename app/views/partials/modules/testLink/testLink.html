@@ -1,0 +1,46 @@
+<div ui-view ng-controller="testLink" data-ng-init="load()">
+	<br>
+	<div class="book-container">
+		<div class="book-header">{{ testData.name }}</div>
+		<div class="book-body">
+			<!-- 			<div class="col-md-12"> -->
+			<!-- 				<div ng-repeat="ques in testData.questions" class="col-md-12"> -->
+			<!-- 					<label 	style="color: #438EA8; padding-bottom: 15px; font-size: 19px; font-weight: 500;">{{ -->
+			<!-- 						$index+1 }}. {{ques.question}}</label> -->
+			<!-- 					<div style="background-color: white; -o-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); -ms-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); margin-bottom: 60px; border-radius: 10px;"> -->
+			<!-- 						<div class="col-md-6" ng-repeat="ans in ques.options"> -->
+			<!-- 							<input type="radio" name="option" ng-model="userSelection.ans" -->
+			<!-- 								ng-value="{{ $index }}" id="{{ $index }}"> <label -->
+			<!-- 								for="{{ $index }}">{{ ans }}</label> -->
+			<!-- 						</div> -->
+			<!-- 					</div> -->
+			<!-- 				</div> -->
+			<!-- 			</div> -->
+			<div class="col-md-12">
+				<div class="col-md-12"
+					style="color: #438EA8; padding-bottom: 15px; font-size: 19px; font-weight: 500;">
+					<h3>{{count}}.) &nbsp;
+						{{testData.questions[count-1].question}}</h3>
+				</div>
+				<div ng-repeat="option in testData.questions[count-1].options"
+					class="col-md-6" class="repeat-wrap">
+					<div class="input-group input-radio">
+						<input type="radio" name="option"
+							ng-model="userSelection[count-1]" ng-value="{{ $index }}"
+							id="{{ $index }}"> <label for="{{ $index }}"
+							class="radio-label">{{ option }}</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="book-footer">
+			<button ng-if="count!=testData.questions.length"
+				ng-click="onNext(testData.questions[count-1])"
+				class="btn btn-success pull-right">Next &nbsp;</button>
+			&nbsp;
+			<button ng-if="count==testData.questions.length"
+				class="btn btn-primary pull-right" ng-click="onSubmit(testData.questions[count-1])">Submit</button>
+		</div>
+	</div>
+
+</div>
